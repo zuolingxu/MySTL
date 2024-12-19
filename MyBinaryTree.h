@@ -2,7 +2,7 @@
 #include "MyStack.h"
 
 template<class T>
-class MyTree {
+class MyBinaryTree {
 public:
     struct Node {
         Node* lchild = nullptr;
@@ -150,12 +150,12 @@ public:
 
     };
 
-    MyTree() { root = new Node; }
-    explicit MyTree(const T& data) {
+    MyBinaryTree() { root = new Node; }
+    explicit MyBinaryTree(const T& data) {
         root = new Node;
         root->data = data;
     }
-    ~MyTree() {
+    ~MyBinaryTree() {
         delete_tree(begin());
         root = nullptr;
     }

@@ -40,7 +40,7 @@ public:
         bool operator>=(const VectorIterator& source) const { return ptr >= source.ptr; }
     };
     MyVector() : ptr(new T[START_SIZE]) {}
-    MyVector(const size_t num, const T& value) : size_(num) {
+    explicit MyVector(const size_t num, const T& value = 0) : size_(num) {
         capacity_ = START_SIZE;
         while (capacity_ < num) { capacity_ *= 2; }
         ptr = new T[capacity_];
@@ -117,6 +117,7 @@ public:
     T& back() { return *(ptr + size_ - 1); }
     const T& back() const { return *(ptr + size_ - 1); }
 
+    [[nodiscard]] bool empty() const { return size_ == 0; }
     void clear() {
         for (size_t i = 0; i < size_; i++) { ptr[i].~T(); }
         size_ = 0;

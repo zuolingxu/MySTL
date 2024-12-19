@@ -2,7 +2,7 @@
 #include "MemoryPool.h"
 
 template<class T>
-class MyTree {
+class MyBinaryTree {
 private:
     struct Node {
         Node* next;
@@ -41,14 +41,14 @@ public:
             Node* get_node() const { return current; }  // 返回内部节点
     };
 
-    MyTree() : size_(0) {
+    MyBinaryTree() : size_(0) {
         Node* sentinel = list_pool.allocate(); // 分配哨兵节点
         sentinel->next = nullptr;
         sentinel->prev = nullptr;
         head = sentinel;
         tail = sentinel;
     }
-    MyTree(const MyTree& other) : MyTree() {
+    MyBinaryTree(const MyBinaryTree& other) : MyBinaryTree() {
         Node* sentinel = list_pool.allocate();
         sentinel->next = nullptr;
         sentinel->prev = nullptr;
@@ -56,9 +56,9 @@ public:
         tail = sentinel;
         for(list_iterator i = other.begin(); i != other.end(); ++i) { push_back(*i); }
     }
-    ~MyTree() { clear(); list_pool.deallocate(tail); } // 清除所有节点并释放哨兵节点
+    ~MyBinaryTree() { clear(); list_pool.deallocate(tail); } // 清除所有节点并释放哨兵节点
 
-    MyTree& operator=(const MyTree& other) {
+    MyBinaryTree& operator=(const MyBinaryTree& other) {
         if (this != &other) {
             clear();
             for(list_iterator i = other.begin(); i != other.end(); ++i) { push_back(*i); }

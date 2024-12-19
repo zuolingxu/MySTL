@@ -10,12 +10,13 @@ add_executable(MySTL
 		MyString.h
 		MyStack.h
 		MyDeque.h
-		MyTree.h
+		MyBinaryTree.h
 		STLTest.cpp
 		MyVector.h
 		MySort.h
 		SurfVector.h
 		Matrix.h
+		MyGraph.h
 )
 set(CMAKE_EXE_LINKER_FLAGS "-static")
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR})

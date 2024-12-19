@@ -121,6 +121,14 @@ public:
         first.refresh_iterator(this, &data[0], data[0], data[0]);
         last = first;
     }
+
+    MyDeque(const size_t size, const T& value = 0){
+        MyDeque();
+        for (int i = 0; i < size; ++i) {
+            push_back(value);
+        }
+    }
+
     MyDeque(const MyDeque& other)
         : unit_size(other.unit_size), size_(0), capacity(1),data_capacity(POINTER_ARRAY_SIZE) {
         data = new T*[data_capacity]();

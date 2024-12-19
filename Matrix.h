@@ -206,8 +206,8 @@ public:
         for (auto &row: data) { row.resize(cols, 0); }
     }
 
-    int col() const { return cols; }
-    int row() const { return rows; };
+    [[nodiscard]] int col() const { return cols; }
+    [[nodiscard]] int row() const { return rows; };
 
     T &operator()(const int row, const int col) {
         if (row < 0 || row >= rows || col < 0 || col >= cols) { throw std::out_of_range("index out of range"); }
