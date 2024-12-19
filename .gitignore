@@ -1,0 +1,5 @@
+STLTest.cpp
+cmake-build-debug
+.idea
+.vs
+*.exe
