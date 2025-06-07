@@ -48,6 +48,20 @@ public:
         }
     }
 
+    void modifyEdgeWeight(const int vertex_from, const int vertex_to, const int weight) const {
+        if (vertex_from >= 0 && vertex_from < size && vertex_to >= 0 && vertex_to < size) {
+            if (adjacency_m[vertex_from][vertex_to] != POSITIVE_INF) {
+                adjacency_m[vertex_from][vertex_to] = weight;
+            }
+        }
+    }
+
+    void removeEdge(const int vertex_from, const int vertex_to) const {
+        if (vertex_from >= 0 && vertex_from < size && vertex_to >= 0 && vertex_to < size) {
+            adjacency_m[vertex_from][vertex_to] = POSITIVE_INF;
+        }
+    }
+
     int operator()(const int vertex_from, const int vertex_to) const {
         if (vertex_from >= 0 && vertex_from < size && vertex_to >= 0 && vertex_to < size) {
             return adjacency_m[vertex_from][vertex_to];
@@ -215,7 +229,16 @@ public:
         return {};
     }
 
-    // TODO: removeEdge
+    [[nodiscard]] MyGraph Transpose() const{
+        MyGraph transpose(size);
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                transpose.adjacency_m[i][j] = adjacency_m[i][j];
+            }
+        }
+        return transpose;
+    }
+
     // TODO: removeVertex
     // TODO: string - vertex map
 };
